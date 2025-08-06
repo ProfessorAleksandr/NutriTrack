@@ -3,9 +3,10 @@ from colorama import Fore, init
 from config import Config
 from aiogram import Bot, Dispatcher, Router
 from handler import commands_router,text_router,callbacks_router
-
+from database import init_db
 async def main() -> None:
     try:
+        init_db()
         bot = Bot(Config.API_TOKEN)
         dp = Dispatcher()
         dp.include_router(commands_router)
